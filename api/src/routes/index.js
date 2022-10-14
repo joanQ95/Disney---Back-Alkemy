@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const characterRouter = require('./characterRoutes'); //agregué
-const genreRouter = require('./genreRoutes');//agregué
-const moviseriesRouter = require('./moviseriesRoutes');
+const characterRouter = require('./character.routes'); //agregué
+const genreRouter = require('./genre.routes');//agregué
+const moviseriesRouter = require('./moviseries.routes');
 const router = Router();
 
 

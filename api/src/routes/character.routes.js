@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { postCharacter, getCharacters, getCharactersById } = require('../controllers');
+const { postCharacter, getCharacters, getCharactersById, updateCharacter, deleteCharacter } = require('../controllers');
 
 const router = Router();
 
@@ -30,6 +30,7 @@ router.get('/:id', async (req, res) => {
 })
 
 
+ 
 router.post('/', async (req,res)=> {
   
 	const {name, age, weight, story, image} = req.body
@@ -44,5 +45,27 @@ router.post('/', async (req,res)=> {
 		return res.status(404).json(err.message)
 	}
 })
+
+router.put("/:id", async (req, res) => {
+	try {
+		const { id } = req.params;
+		const { name, age, weight, story, image } = req.body;
+		return res.status(202).json(await updateCharacter(id, name, age, weight, story, image))  
+		
+	  } catch (err) {
+		console.log(err);
+	  }
+
+})
+
+router.delete("/:id", async (req, res) => {
+	try {
+		const { id } = req.params;
+		return res.status(202).json(await deleteCharacter(id))  
+	  
+	} catch (err) {
+	  res.status(404).json(err.message);
+	}
+  });
 
 module.exports = router;

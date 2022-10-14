@@ -9,11 +9,12 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     title:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     creationAge:{
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     rated:{
